@@ -9,10 +9,10 @@ export const useIssuesStore = defineStore({
         issue: {}
     }),
     actions: {
-        async getAll() {
+        async getAll(roomId) {
             this.issues = { loading: true };
             try {
-                this.issues = await fetchWrapper.get(`${baseApiUrl}/api/issues/`);    
+                this.issues = await fetchWrapper.get(`${baseApiUrl}/api/rooms/${roomId}/issues/`);    
             } catch (error) {
                 this.issues = { error };
             }
@@ -26,7 +26,12 @@ export const useIssuesStore = defineStore({
             }
         },
         async update(id, params) {
-            await fetchWrapper.put(`${baseApiUrl}/api/issues/${id}`, params);
+            await fetchWrapper.patch(`${baseApiUrl}/api/issues/${id}`, params);
+
+            
+        },
+        async create(roomId, params) {
+            await fetchWrapper.post(`${baseApiUrl}/api/rooms/${roomId}/issues`, params);
 
             
         },
