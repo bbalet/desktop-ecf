@@ -1,7 +1,5 @@
 import { useAuthStore } from '@/stores'
-import { globals } from '../main'
-
-const baseApiUrl = `${globals.baseApiUrl}`
+import { baseApiUrl } from '../main'
 
 export const fetchWrapper = {
     get: request('GET'),
@@ -31,7 +29,7 @@ function authHeader(url) {
     // return auth header with jwt if user is logged in and request is to the api url
     const { user } = useAuthStore();
     const isLoggedIn = !!user?.token;
-    const isApiUrl = url.startsWith(baseApiUrl);
+    const isApiUrl = url.startsWith(`${baseApiUrl}/api/`);
     if (isLoggedIn && isApiUrl) {
         return { Authorization: `Bearer ${user.token}` };
     } else {

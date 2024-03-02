@@ -2,9 +2,7 @@ import { defineStore } from 'pinia'
 import { fetchWrapper } from '@/helpers'
 import { router } from '@/router'
 import { useAlertStore } from '@/stores'
-import { globals } from '../main'
-
-const baseApiUrl = `${globals.baseApiUrl}`
+import { baseApiUrl } from '../main'
 
 export const useAuthStore = defineStore({
     id: 'auth',
@@ -14,9 +12,9 @@ export const useAuthStore = defineStore({
         returnUrl: null
     }),
     actions: {
-        async login(username, password) {
+        async login(email, password) {
             try {
-                const user = await fetchWrapper.post(`${baseApiUrl}/auth`, { username, password });    
+                const user = await fetchWrapper.post(`${baseApiUrl}/auth`, { email, password });    
 
                 // update pinia state
                 this.user = user;
