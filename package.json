@@ -1,8 +1,15 @@
 {
-  "name": "desktop-ecf",
+  "name": "cinephoria",
+  "author": "Benjamin Balet",
+  "description": "Une application de gestion pour les employés de Cinéphoria",
   "version": "0.0.0",
   "private": true,
-  "type": "module",
+  "license": "AGPL-3.0-only",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bbalet/desktop-ecf.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,23 +18,38 @@
     "test:e2e": "start-server-and-test preview http://localhost:4173 'cypress run --e2e'",
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "format": "prettier --write src/",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
+    "electron-squirrel-startup": "^1.0.0",
     "pinia": "^2.1.7",
+    "update-electron-app": "^3.0.0",
     "vee-validate": "^4.12.5",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5",
     "yup": "^1.3.3"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^7.3.0",
+    "@electron-forge/maker-deb": "^7.3.0",
+    "@electron-forge/maker-rpm": "^7.3.0",
+    "@electron-forge/maker-squirrel": "^7.3.0",
+    "@electron-forge/maker-zip": "^7.3.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.3.0",
+    "@electron-forge/plugin-fuses": "^7.3.0",
+    "@electron-forge/publisher-github": "^7.3.0",
     "@rushstack/eslint-patch": "^1.3.3",
     "@vitejs/plugin-vue": "^5.0.3",
     "@vue/eslint-config-prettier": "^8.0.0",
     "@vue/test-utils": "^2.4.4",
     "cypress": "^13.6.3",
+    "electron": "^29.1.0",
     "eslint": "^8.49.0",
     "eslint-plugin-cypress": "^2.15.1",
     "eslint-plugin-vue": "^9.17.0",
