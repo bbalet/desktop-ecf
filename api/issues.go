@@ -109,14 +109,11 @@ func (i IssueAPI) UpdateIssue(issue Issue) (int, error) {
 		log.Fatalf("Impossible de créer le client HTTP: %v", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Content-Type", "application/merge-patch+json")
 	req.Header.Set("Authorization", "Bearer "+i.apiClient.token)
 	q := req.URL.Query()
 	q.Add("issueId", strconv.Itoa(issue.IssueID))
 	req.URL.RawQuery = q.Encode()
-
-	bytes, _ := httputil.DumpRequestOut(req, true)
-	fmt.Printf("Out CreateNewIssue : %v\n", string(bytes[:]))
 
 	// Do a GET request
 	response, err := client.Do(req)
@@ -124,14 +121,6 @@ func (i IssueAPI) UpdateIssue(issue Issue) (int, error) {
 		log.Fatalf("Erreur lors de la requête PATCH: %v", err)
 	}
 	defer response.Body.Close()
-
-	// Read the response body
-	body, err := io.ReadAll(response.Body)
-	if err != nil {
-		log.Fatalf("Erreur lors de la lecture de la réponse: %v", err)
-	}
-
-	fmt.Printf("Out CreateNewIssue : %v\n", string(body[:]))
 
 	return response.StatusCode, err
 }
