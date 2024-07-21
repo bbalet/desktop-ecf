@@ -1,0 +1,8 @@
+Website = "https://cinephoria.jorani.org/"
+
+[Details]
+  Icon = "icon.png"
+  Name = "Cinéphoria"
+  ID = "balet.benjamin.cinephoria"
+  Version = "1.0.0"
+  Build = 7
