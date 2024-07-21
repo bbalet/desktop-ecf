@@ -4,6 +4,12 @@ Cinéphoria Maintenance est une application desktop multiplateformes (Linux, Fre
 
 Vous pouvez télécharger la version de l'application qui correspond à votre OS dans l'onglet Release. Si vous souhaitez une version pour les OS d'Apple, vous devez la compiler vous-même sur une machine Apple.
 
+##  Mode d'emploi
+
+Le mode d'emploi complet est ici : https://github.com/bbalet/web-ecf/blob/main/docs/guide_utilisateur.pdf
+
+En résumé, seul un utilisateur ayant un rôle employé peut utiliser l'application (login : employee@example.org ; mot de passe : employee).
+
 ## Exemples
 
 Sur Linux :
